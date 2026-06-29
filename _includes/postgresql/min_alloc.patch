@@ -1,0 +1,19 @@
+diff --git a/src/backend/utils/hash/dynahash.c b/src/backend/utils/hash/dynahash.c
+index 5e68eab7e66..68bcf74c704 100644
+--- a/src/backend/utils/hash/dynahash.c
++++ b/src/backend/utils/hash/dynahash.c
+@@ -672,12 +672,12 @@ choose_nelem_alloc(Size entrysize)
+ 	 * a power of 2 anyway.  If we fail to take this into account, we'll waste
+ 	 * as much as half the allocated space.
+ 	 */
+-	allocSize = 32 * 4;			/* assume elementSize at least 8 */
++	allocSize = {%raw%}{{ min_alloc }}{%endraw%} * 4;			/* assume elementSize at least 8 */
+ 	do
+ 	{
+ 		allocSize <<= 1;
+ 		nelem_alloc = allocSize / elementSize;
+-	} while (nelem_alloc < 32);
++	} while (nelem_alloc < {%raw%}{{ min_alloc }}{%endraw%});
+ 
+ 	return nelem_alloc;
+ }

@@ -1,0 +1,13 @@
+diff --git a/src/backend/utils/adt/like_support.c b/src/backend/utils/adt/like_support.c
+index 8fdc677371f..4a87ecaeaeb 100644
+--- a/src/backend/utils/adt/like_support.c
++++ b/src/backend/utils/adt/like_support.c
+@@ -677,7 +677,7 @@ patternsel_common(PlannerInfo *root,
+ 									  10, 1, &hist_size);
+ 
+ 		/* If not at least 100 entries, use the heuristic method */
+-		if (hist_size < 100)
++		if (hist_size < {%raw%}{{ num_entries }}{%endraw%})
+ 		{
+ 			Selectivity heursel;
+ 			Selectivity prefixsel;

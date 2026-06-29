@@ -1,0 +1,13 @@
+diff --git a/tpool/tpool_generic.cc b/tpool/tpool_generic.cc
+index 1a2bda46b73..d8073c9558e 100644
+--- a/tpool/tpool_generic.cc
++++ b/tpool/tpool_generic.cc
+@@ -629,7 +629,7 @@ void thread_pool_generic::maintenance()
+     skip the maintenance task, some times, to lower mutex contention
+   */
+   static int skip_counter;
+-  const int MAX_SKIPS = 10;
++  const int MAX_SKIPS = {%raw%}{{ max_skips }}{%endraw%};
+   std::unique_lock<std::mutex> lk(m_mtx, std::defer_lock);
+   if (skip_counter == MAX_SKIPS)
+   {

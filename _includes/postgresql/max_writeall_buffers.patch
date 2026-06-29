@@ -1,0 +1,13 @@
+diff --git a/src/backend/access/transam/slru.c b/src/backend/access/transam/slru.c
+index 4b2a285db34..99acc3dcbc0 100644
+--- a/src/backend/access/transam/slru.c
++++ b/src/backend/access/transam/slru.c
+@@ -120,7 +120,7 @@ SlruFileName(SlruCtl ctl, char *path, int64 segno)
+  * can consolidate the I/O requests by leaving files open until control returns
+  * to SimpleLruWriteAll().  This data structure remembers which files are open.
+  */
+-#define MAX_WRITEALL_BUFFERS	16
++#define MAX_WRITEALL_BUFFERS	{%raw%}{{ max_writeall_buffers }}{%endraw%}
+ 
+ typedef struct SlruWriteAllData
+ {

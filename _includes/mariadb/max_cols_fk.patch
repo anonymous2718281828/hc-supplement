@@ -1,0 +1,13 @@
+diff --git a/storage/innobase/handler/ha_innodb.cc b/storage/innobase/handler/ha_innodb.cc
+index 6518aa00aa3..71ee7d3a535 100644
+--- a/storage/innobase/handler/ha_innodb.cc
++++ b/storage/innobase/handler/ha_innodb.cc
+@@ -12337,7 +12337,7 @@ create_table_info_t::create_foreign_keys()
+ 	dict_foreign_set_free local_fk_set_free(local_fk_set);
+ 	dberr_t		      error;
+ 	ulint		      number	      = 1;
+-	static const unsigned MAX_COLS_PER_FK = 500;
++	static const unsigned MAX_COLS_PER_FK = {%raw%}{{ max_cols }}{%endraw%};
+ 	const char*	      column_names[MAX_COLS_PER_FK];
+ 	const char*	      ref_column_names[MAX_COLS_PER_FK];
+ 	char		      create_name[MAX_DATABASE_NAME_LEN + 1 +

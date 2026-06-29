@@ -1,0 +1,13 @@
+diff --git a/bzlib_private.h b/bzlib_private.h
+index 73f8950..f1cd433 100644
+--- a/bzlib_private.h
++++ b/bzlib_private.h
+@@ -118,7 +118,7 @@ extern void bz_internal_error ( int errcode );
+ 
+ #define BZ_N_GROUPS 6
+ #define BZ_G_SIZE   50
+-#define BZ_N_ITERS  4
++#define BZ_N_ITERS  {%raw%}{{ bz_n_iters }}{%endraw%}
+ 
+ #define BZ_MAX_SELECTORS (2 + (900000 / BZ_G_SIZE))
+ 

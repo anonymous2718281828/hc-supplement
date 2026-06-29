@@ -1,0 +1,13 @@
+diff --git a/src/backend/storage/buffer/bufmgr.c b/src/backend/storage/buffer/bufmgr.c
+index 6ba5e207534..54385a1a030 100644
+--- a/src/backend/storage/buffer/bufmgr.c
++++ b/src/backend/storage/buffer/bufmgr.c
+@@ -97,7 +97,7 @@ typedef struct PrivateRefCountEntry
+ } PrivateRefCountEntry;
+ 
+ /* 64 bytes, about the size of a cache line on common systems */
+-#define REFCOUNT_ARRAY_ENTRIES 8
++#define REFCOUNT_ARRAY_ENTRIES {%raw%}{{ ref_cnt_size }}{%endraw%}
+ 
+ /*
+  * Status of buffers to checkpoint for a particular tablespace, used

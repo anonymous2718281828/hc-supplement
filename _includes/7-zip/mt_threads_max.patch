@@ -1,0 +1,13 @@
+diff --git a/C/MtCoder.h b/C/MtCoder.h
+index 2b182f54..78dc6227 100644
+--- a/C/MtCoder.h
++++ b/C/MtCoder.h
+@@ -16,7 +16,7 @@ EXTERN_C_BEGIN
+ 
+ #ifndef Z7_ST
+   #define MTCODER_GET_NUM_BLOCKS_FROM_THREADS(numThreads) ((numThreads) + (numThreads) / 8 + 1)
+-  #define MTCODER_THREADS_MAX 256
++  #define MTCODER_THREADS_MAX {%raw%}{{ mt_threads_max }}{%endraw%}
+   #define MTCODER_BLOCKS_MAX (MTCODER_GET_NUM_BLOCKS_FROM_THREADS(MTCODER_THREADS_MAX) + 3)
+ #else
+   #define MTCODER_THREADS_MAX 1

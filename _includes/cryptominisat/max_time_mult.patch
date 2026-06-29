@@ -1,0 +1,13 @@
+diff --git a/src/distillerlongwithimpl.cpp b/src/distillerlongwithimpl.cpp
+index e366c02b6..c2298f3ac 100644
+--- a/src/distillerlongwithimpl.cpp
++++ b/src/distillerlongwithimpl.cpp
+@@ -273,7 +273,7 @@ uint64_t DistillerLongWithImpl::calc_time_available(
+         && float_div(stats->numClSubsumed, stats->triedCls) < 0.05
+         && float_div(stats->numLitsRem, stats->totalLits) < 0.05
+     ) {
+-        maxCountTime *= 0.5;
++        maxCountTime *= {%raw%}{{ mtime_mult }}{%endraw%};
+     }
+ 
+     return maxCountTime;

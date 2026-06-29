@@ -1,0 +1,13 @@
+diff --git a/src/vivify.cpp b/src/vivify.cpp
+index fe37a00a..7397ec6f 100644
+--- a/src/vivify.cpp
++++ b/src/vivify.cpp
+@@ -1869,7 +1869,7 @@ bool Internal::vivify () {
+       if (stats.vivifychecks - old_tried == 0 ||
+           (float) (stats.vivifystrirr - old) /
+                   (float) (stats.vivifychecks - old_tried) <
+-              0.01) {
++              {%raw%}{{ vivify_check_thresh }}{%endraw%}) {
+         delaying_vivify_irredundant.bumpreasons.bump_delay ();
+       } else {
+         delaying_vivify_irredundant.bumpreasons.reduce_delay ();

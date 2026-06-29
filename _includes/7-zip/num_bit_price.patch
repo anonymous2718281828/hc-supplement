@@ -1,0 +1,13 @@
+diff --git a/C/LzmaEnc.c b/C/LzmaEnc.c
+index cd1cd0e2..b58249c0 100644
+--- a/C/LzmaEnc.c
++++ b/C/LzmaEnc.c
+@@ -49,7 +49,7 @@ static unsigned g_STAT_OFFSET = 0;
+ #define kProbInitValue (kBitModelTotal >> 1)
+ 
+ #define kNumMoveReducingBits 4
+-#define kNumBitPriceShiftBits 4
++#define kNumBitPriceShiftBits {%raw%}{{ num_bit_price }}{%endraw%}
+ // #define kBitPrice (1 << kNumBitPriceShiftBits)
+ 
+ #define REP_LEN_COUNT 64

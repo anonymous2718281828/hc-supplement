@@ -1,0 +1,13 @@
+diff --git a/src/searcher.cpp b/src/searcher.cpp
+index 2d98fb74d..fa5f2c21c 100644
+--- a/src/searcher.cpp
++++ b/src/searcher.cpp
+@@ -2196,7 +2196,7 @@ void Searcher::setup_branch_strategy()
+ {
+     if (sumConflicts < branch_strategy_change) return;
+     branch_strategy_change += 5000;
+-    branch_strategy_change *= 1.1;
++    branch_strategy_change *= {%raw%}{{ strat_change_mult }}{%endraw%};
+     branch_strategy_at++;
+ 
+     size_t smallest = 0;

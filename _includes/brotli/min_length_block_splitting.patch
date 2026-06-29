@@ -1,0 +1,13 @@
+diff --git a/c/enc/block_splitter.c b/c/enc/block_splitter.c
+index eba1b69..a5455e7 100644
+--- a/c/enc/block_splitter.c
++++ b/c/enc/block_splitter.c
+@@ -34,7 +34,7 @@ static const size_t kDistanceStrideLength = 40;
+ static const size_t kSymbolsPerLiteralHistogram = 544;
+ static const size_t kSymbolsPerCommandHistogram = 530;
+ static const size_t kSymbolsPerDistanceHistogram = 544;
+-static const size_t kMinLengthForBlockSplitting = 128;
++static const size_t kMinLengthForBlockSplitting = {%raw%}{{ min_length_block_splitting }}{%endraw%};
+ static const size_t kIterMulForRefining = 2;
+ static const size_t kMinItersForRefining = 100;
+ 

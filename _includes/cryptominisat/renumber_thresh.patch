@@ -1,0 +1,13 @@
+diff --git a/src/solver.cpp b/src/solver.cpp
+index 51627380b..80bf89bed 100644
+--- a/src/solver.cpp
++++ b/src/solver.cpp
+@@ -909,7 +909,7 @@ bool Solver::renumber_variables(bool must_renumber)
+     SLOW_DEBUG_DO(for(const auto& x: xorclauses) for(const auto& v: x) assert(v < nVars()));
+ 
+     if (nVars() == 0) return okay();
+-    if (!must_renumber && calc_renumber_saving() < 0.2) return okay();
++    if (!must_renumber && calc_renumber_saving() < {%raw%}{{ renumber_thresh }}{%endraw%}) return okay();
+     if (!clear_gauss_matrices(false)) return false;
+ 
+     double my_time = cpuTime();

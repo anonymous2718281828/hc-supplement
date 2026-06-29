@@ -1,0 +1,13 @@
+diff --git a/sql/sql_string.cc b/sql/sql_string.cc
+index 8015051ac5b..b48b477bc14 100644
+--- a/sql/sql_string.cc
++++ b/sql/sql_string.cc
+@@ -1187,7 +1187,7 @@ void String::print(String *str) const
+ 
+ void String::print_with_conversion(String *print, CHARSET_INFO *cs) const
+ {
+-  StringBuffer<256> tmp(cs);
++  StringBuffer<{%raw%}{{ buf_size }}{%endraw%}> tmp(cs);
+   uint errors= 0;
+   tmp.copy(this, cs, &errors);
+   tmp.print(print);

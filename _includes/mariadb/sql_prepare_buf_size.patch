@@ -1,0 +1,13 @@
+diff --git a/sql/sql_prepare.cc b/sql/sql_prepare.cc
+index d77ae1d15b9..69b7094f44b 100644
+--- a/sql/sql_prepare.cc
++++ b/sql/sql_prepare.cc
+@@ -2760,7 +2760,7 @@ void mysql_sql_stmt_prepare(THD *thd)
+     It's important for "buffer" not to be destructed before stmt->prepare()!
+     See comments in get_dynamic_sql_string().
+   */
+-  StringBuffer<256> buffer;
++  StringBuffer<{%raw%}{{ buf_size }}{%endraw%}> buffer;
+   if (lex->prepared_stmt.get_dynamic_sql_string(thd, &query, &buffer) ||
+       ! (stmt= new Prepared_statement(thd)))
+   {

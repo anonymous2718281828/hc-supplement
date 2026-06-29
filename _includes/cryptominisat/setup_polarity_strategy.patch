@@ -1,0 +1,13 @@
+diff --git a/src/searcher.cpp b/src/searcher.cpp
+index 2d98fb74d..de87df518 100644
+--- a/src/searcher.cpp
++++ b/src/searcher.cpp
+@@ -2335,7 +2335,7 @@ void Searcher::setup_polarity_strategy()
+ {
+     if (sumConflicts < polarity_strategy_change) return;
+     polarity_strategy_change = sumConflicts + 5000;
+-    polarity_strategy_change *= 1.01;
++    polarity_strategy_change *= {%raw%}{{ polarity_change_mult }}{%endraw%};
+     polarity_strategy_at++;
+ 
+     if ((polarity_strategy_at % 8) == 0) {

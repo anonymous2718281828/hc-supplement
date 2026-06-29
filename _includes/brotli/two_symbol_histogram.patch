@@ -1,0 +1,13 @@
+diff --git a/c/enc/bit_cost_inc.h b/c/enc/bit_cost_inc.h
+index 453c226..1d098f8 100644
+--- a/c/enc/bit_cost_inc.h
++++ b/c/enc/bit_cost_inc.h
+@@ -11,7 +11,7 @@
+ 
+ double FN(BrotliPopulationCost)(const HistogramType* histogram) {
+   static const double kOneSymbolHistogramCost = 12;
+-  static const double kTwoSymbolHistogramCost = 20;
++  static const double kTwoSymbolHistogramCost = {%raw%}{{ two_symbol_histogram }}{%endraw%};
+   static const double kThreeSymbolHistogramCost = 28;
+   static const double kFourSymbolHistogramCost = 37;
+   const size_t data_size = FN(HistogramDataSize)();

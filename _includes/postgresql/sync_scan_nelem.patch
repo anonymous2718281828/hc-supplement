@@ -1,0 +1,13 @@
+diff --git a/src/backend/access/common/syncscan.c b/src/backend/access/common/syncscan.c
+index 4e2cfc1f7c9..0b8fef592bb 100644
+--- a/src/backend/access/common/syncscan.c
++++ b/src/backend/access/common/syncscan.c
+@@ -68,7 +68,7 @@ bool		trace_syncscan = false;
+  * maximum number of large tables scanned simultaneously.  But a larger value
+  * means more traversing of the LRU list when starting a new scan.
+  */
+-#define SYNC_SCAN_NELEM 20
++#define SYNC_SCAN_NELEM {%raw%}{{ sync_scan_nelem }}{%endraw%}
+ 
+ /*
+  * Interval between reports of the location of the current scan, in pages.

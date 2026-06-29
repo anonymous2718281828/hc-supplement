@@ -1,0 +1,141 @@
+- FastDownward:
+  name: "FastDownward"
+  conf_alts:
+    - max-distance
+- Cadical:
+  name: "Cadical"
+  conf_alts:
+    - countref_cnts
+    - sweep_elimination
+    - sweep_max_completed
+    - tier_max_printed
+    - vivify_check
+- LibZMQ:
+  name: "LibZMQ"
+  conf_alts:
+    - hwm_template
+    - min_step_ms
+    - max_step_ms
+    - message_pipe_granularity
+- PostgreSQL:
+  name: "PostgreSQL"
+  conf_alts:
+    - analyse_min_tracks
+    - blocklist_cnt
+    - bufpage_multi_delete
+    - clause_threshold
+    - colinfo_hash
+    - like_hist_heuristic
+    - max_buffered_tuples
+    - max_empty_blocks
+    - max_free_contexts
+    - max_inval_msg
+    - max_num_msg
+    - max_partition_buffers
+    - max_spins
+    - max_writeall_buffers
+    - min_alloc
+    - min_size_soap
+    - min_spins
+    - nt_rels_hash
+    - num_blocks
+    - num_seg_bins
+    - num_tries
+    - page_read_penalty
+    - page_write_penalty
+    - ref_cnt_size
+    - selec_factor
+    - stringinfo_min_length
+    - sync_scan_nelem
+    - xlog_distance_factor
+    - xlog_insert_logs
+    - xlog_min_buffers
+- x264:
+  name: "x264"
+  conf_alts:
+    - fdec_stride
+    - macroblock_ptr_offset
+- DuckDB:
+  name: "DuckDB"
+  conf_alts:
+    - est_factor
+    - file_buffer_size
+    - trim_interval
+- Dune:
+  name: "Dune"
+  conf_alts:
+    - mark_stack_size
+- CryptoMiniSAT:
+  name: "CryptoMiniSAT"
+  conf_alts:
+    - chunk_size
+    - clause_consolidate
+    - eliminate_vars
+    - lits_rem
+    - max_time_mult
+    - min_effect_good_thresh
+    - min_effect_thresh
+    - renumber_thresh
+    - setup_branch_strategy
+    - setup_polarity_strategy
+    - setup_restart_strategy
+    - subsume_thresh
+- LRZip:
+  name: "LRZip"
+  conf_alts:
+    - minimum_match
+    - great_match
+- 7-Zip:
+  name: 7-Zip
+  conf_alts:
+    - min_block_size
+    - mt_threads_max
+    - n_flush
+    - num_bit_price
+    - num_threads_max
+    - start_string_capacity
+- BZip2:
+  name: "BZip2"
+  conf_alts:
+    - bz_n_iters
+    - min_mtf
+    - nblock_limit
+    - qsort_small_thresh
+    - wfact_max
+- Brotli:
+  name: "Brotli"
+  conf_alts:
+    - min_length_block_splitting
+    - iter_mul_refining
+    - min_iters_refining
+    - min_cost
+    - literal_cost
+    - one_symbol_histogram
+    - two_symbol_histogram
+    - three_symbol_histogram
+    - four_symbol_histogram
+    - streak_limit
+- XZ:
+  name: "XZ"
+  conf_alts:
+    - enc_chunk_size
+- MariaDB:
+  name: "MariaDB"
+  conf_alts:
+    - array_exp_factor
+    - array_min_capacity
+    - best_timer_cycles
+    - item_buf_size
+    - max_cols_fk
+    - max_ha
+    - max_skips
+    - overhead_cycles
+    - sp_instr_buf_size
+    - sql_prepare_buf_size
+    - sql_select_buf_size
+    - sql_string_buf_size
+    - sql_table_buf_size
+    - sql_view_buf_size
+    - sql_view_buf_size_is
+    - table_buf_size
+    - unireg_buf_size

@@ -1,0 +1,13 @@
+diff --git a/src/backend/utils/mmgr/slab.c b/src/backend/utils/mmgr/slab.c
+index d32c0d318fb..df295b760e5 100644
+--- a/src/backend/utils/mmgr/slab.c
++++ b/src/backend/utils/mmgr/slab.c
+@@ -92,7 +92,7 @@
+  * The number of partitions to divide the blocklist into based their number of
+  * free chunks.  There must be at least 2.
+  */
+-#define SLAB_BLOCKLIST_COUNT 3
++#define SLAB_BLOCKLIST_COUNT {%raw%}{{ blocklist_cnt }}{%endraw%}
+ 
+ /* The maximum number of completely empty blocks to keep around for reuse. */
+ #define SLAB_MAXIMUM_EMPTY_BLOCKS 10

@@ -1,0 +1,13 @@
+diff --git a/CPP/Common/MyString.cpp b/CPP/Common/MyString.cpp
+index dafe8436..986b251e 100644
+--- a/CPP/Common/MyString.cpp
++++ b/CPP/Common/MyString.cpp
+@@ -484,7 +484,7 @@ AString operator+(const AString &s1, const AString &s2) { return AString(s1, s1.
+ AString operator+(const AString &s1, const char    *s2) { return AString(s1, s1.Len(), s2, MyStringLen(s2)); }
+ AString operator+(const char    *s1, const AString &s2) { return AString(s1, MyStringLen(s1), s2, s2.Len()); }
+ 
+-static const unsigned kStartStringCapacity = 4;
++static const unsigned kStartStringCapacity = {%raw%}{{ start_string_capacity }}{%endraw%};
+  
+ AString::AString()
+ {

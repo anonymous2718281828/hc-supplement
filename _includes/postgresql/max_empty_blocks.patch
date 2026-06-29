@@ -1,0 +1,13 @@
+diff --git a/src/backend/utils/mmgr/slab.c b/src/backend/utils/mmgr/slab.c
+index d32c0d318fb..625d1b22174 100644
+--- a/src/backend/utils/mmgr/slab.c
++++ b/src/backend/utils/mmgr/slab.c
+@@ -95,7 +95,7 @@
+ #define SLAB_BLOCKLIST_COUNT 3
+ 
+ /* The maximum number of completely empty blocks to keep around for reuse. */
+-#define SLAB_MAXIMUM_EMPTY_BLOCKS 10
++#define SLAB_MAXIMUM_EMPTY_BLOCKS {%raw%}{{ max_empty_blocks }}{%endraw%}
+ 
+ /*
+  * SlabContext is a specialized implementation of MemoryContext.

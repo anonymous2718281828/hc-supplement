@@ -1,0 +1,13 @@
+diff --git a/src/clauseallocator.cpp b/src/clauseallocator.cpp
+index 7b0c10eff..dbdd12915 100644
+--- a/src/clauseallocator.cpp
++++ b/src/clauseallocator.cpp
+@@ -256,7 +256,7 @@ void ClauseAllocator::consolidate(
+     //   Avoiding segfault (max is 16 outerOffsets, more than 10 is near)
+     //2) There is too much empty, unused space (>30%)
+     if (!force
+-        && (float_div(currentlyUsedSize, size) > 0.8 || currentlyUsedSize < (100ULL*1000ULL))
++        && (float_div(currentlyUsedSize, size) > {%raw%}{{ realloc_limit }}{%endraw%} || currentlyUsedSize < (100ULL*1000ULL))
+     ) {
+         if (solver->conf.verbosity >= 3 || lower_verb)
+             verb_print(1, "Not consolidating memory.");

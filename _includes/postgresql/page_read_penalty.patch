@@ -1,0 +1,13 @@
+diff --git a/src/backend/optimizer/path/costsize.c b/src/backend/optimizer/path/costsize.c
+index a290a3e66b6..71b464ae8dd 100644
+--- a/src/backend/optimizer/path/costsize.c
++++ b/src/backend/optimizer/path/costsize.c
+@@ -2828,7 +2828,7 @@ cost_agg(Path *path, PlannerInfo *root,
+ 		 * HashAgg has somewhat worse IO behavior than Sort on typical
+ 		 * hardware/OS combinations. Account for this with a generic penalty.
+ 		 */
+-		pages_read *= 2.0;
++		pages_read *= {%raw%}{{ read_penalty }}{%endraw%};
+ 		pages_written *= 2.0;
+ 
+ 		startup_cost += pages_written * random_page_cost;

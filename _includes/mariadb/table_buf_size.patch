@@ -1,0 +1,13 @@
+diff --git a/sql/table.cc b/sql/table.cc
+index d8c59ce127b..21ccaa18783 100644
+--- a/sql/table.cc
++++ b/sql/table.cc
+@@ -5565,7 +5565,7 @@ Table_check_intact::check(TABLE *table, const TABLE_FIELD_DEF *table_def)
+   }
+   else
+   {
+-  StringBuffer<1024> sql_type(system_charset_info);
++  StringBuffer<{%raw%}{{ buf_size }}{%endraw%}> sql_type(system_charset_info);
+   sql_type.extra_allocation(256); // Allocate min 256 characters at once
+   for (i=0 ; i < table_def->count; i++, field_def++)
+   {

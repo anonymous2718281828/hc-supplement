@@ -1,0 +1,13 @@
+diff --git a/sql/handler.h b/sql/handler.h
+index 4557e2adf10..9b8b2eabe4b 100644
+--- a/sql/handler.h
++++ b/sql/handler.h
+@@ -474,7 +474,7 @@ enum chf_create_flags {
+   Note: the following includes binlog and closing 0.
+   TODO remove the limit, use dynarrays
+ */
+-#define MAX_HA 64
++#define MAX_HA {%raw%}{{ max_ha }}{%endraw%}
+ 
+ /*
+   Use this instead of 0 as the initial value for the slot number of

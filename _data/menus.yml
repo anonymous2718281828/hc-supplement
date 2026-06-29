@@ -7,6 +7,8 @@ header:
     title: Data Availability
   - url: /settings
     title: Settings
+  - url: /config_alts
+    title: Configuration Alternatives
   - url: /plots
     title: Additional Plots
   - url: /reproduction

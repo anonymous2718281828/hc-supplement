@@ -1,0 +1,13 @@
+diff --git a/blocksort.c b/blocksort.c
+index 1c3ee94..b6df8de 100644
+--- a/blocksort.c
++++ b/blocksort.c
+@@ -1041,7 +1041,7 @@ void BZ2_blockSort ( EState* s )
+    Int32   budgetInit;
+    Int32   i;
+ 
+-   if (nblock < 10000) {
++   if (nblock < {%raw%}{{ nblock_limit }}{%endraw%}) {
+       fallbackSort ( s->arr1, s->arr2, ftab, nblock, verb );
+    } else {
+       /* Calculate the location for quadrant, remembering to get

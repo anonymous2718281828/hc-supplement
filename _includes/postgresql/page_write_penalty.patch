@@ -1,0 +1,13 @@
+diff --git a/src/backend/optimizer/path/costsize.c b/src/backend/optimizer/path/costsize.c
+index a290a3e66b6..08da65ef6b4 100644
+--- a/src/backend/optimizer/path/costsize.c
++++ b/src/backend/optimizer/path/costsize.c
+@@ -2829,7 +2829,7 @@ cost_agg(Path *path, PlannerInfo *root,
+ 		 * hardware/OS combinations. Account for this with a generic penalty.
+ 		 */
+ 		pages_read *= 2.0;
+-		pages_written *= 2.0;
++		pages_written *= {%raw%}{{ write_penalty }}{%endraw%};
+ 
+ 		startup_cost += pages_written * random_page_cost;
+ 		total_cost += pages_written * random_page_cost;

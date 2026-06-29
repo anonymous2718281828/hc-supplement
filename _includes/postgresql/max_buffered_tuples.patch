@@ -1,0 +1,13 @@
+diff --git a/src/backend/commands/copyfrom.c b/src/backend/commands/copyfrom.c
+index 12781963b4f..51ce22e8386 100644
+--- a/src/backend/commands/copyfrom.c
++++ b/src/backend/commands/copyfrom.c
+@@ -60,7 +60,7 @@
+  * memory requirements during copies into partitioned tables with a large
+  * number of partitions.
+  */
+-#define MAX_BUFFERED_TUPLES		1000
++#define MAX_BUFFERED_TUPLES		{%raw%}{{ max_tuples }}{%endraw%}
+ 
+ /*
+  * Flush buffers if there are >= this many bytes, as counted by the input

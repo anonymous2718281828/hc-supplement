@@ -1,0 +1,13 @@
+diff --git a/sql/sql_view.cc b/sql/sql_view.cc
+index a82e4a83363..05f9f2b07e1 100644
+--- a/sql/sql_view.cc
++++ b/sql/sql_view.cc
+@@ -1026,7 +1026,7 @@ static int mysql_register_view(THD *thd, DDL_LOG_STATE *ddl_log_state,
+ 
+     View definition query is stored in the client character set.
+   */
+-  StringBuffer<4096> view_query(thd->charset());
++  StringBuffer<{%raw%}{{ buf_size }}{%endraw%}> view_query(thd->charset());
+   StringBuffer<4096> is_query(system_charset_info);
+ 
+   char md5[MD5_BUFF_LENGTH];

@@ -1,0 +1,13 @@
+diff --git a/src/backend/storage/page/bufpage.c b/src/backend/storage/page/bufpage.c
+index dbb49ed9197..3ef0d6562a7 100644
+--- a/src/backend/storage/page/bufpage.c
++++ b/src/backend/storage/page/bufpage.c
+@@ -1187,7 +1187,7 @@ PageIndexMultiDelete(Page page, OffsetNumber *itemnos, int nitems)
+ 	 *
+ 	 * TODO: tune the magic number here
+ 	 */
+-	if (nitems <= 2)
++	if (nitems <= {%raw%}{{ nitems }}{%endraw%})
+ 	{
+ 		while (--nitems >= 0)
+ 			PageIndexTupleDelete(page, itemnos[nitems]);

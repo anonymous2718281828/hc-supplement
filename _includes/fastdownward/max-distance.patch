@@ -1,0 +1,13 @@
+diff --git a/src/search/algorithms/int_hash_set.h b/src/search/algorithms/int_hash_set.h
+index 259ce68f7..0317ff417 100644
+--- a/src/search/algorithms/int_hash_set.h
++++ b/src/search/algorithms/int_hash_set.h
+@@ -78,7 +78,7 @@ static_assert(sizeof(HashType) == 4, "HashType does not use 4 bytes");
+ template<typename Hasher, typename Equal>
+ class IntHashSet {
+     // Max distance from the ideal bucket to the actual bucket for each key.
+-    static const int MAX_DISTANCE = 32;
++    static const int MAX_DISTANCE = {%raw%}{{ max_distance }}{%endraw%};
+     static const unsigned int MAX_BUCKETS = std::numeric_limits<unsigned int>::max();
+ 
+     struct Bucket {

@@ -1,0 +1,13 @@
+diff --git a/c/enc/entropy_encode.c b/c/enc/entropy_encode.c
+index 9aed43b..6d107d0 100644
+--- a/c/enc/entropy_encode.c
++++ b/c/enc/entropy_encode.c
+@@ -248,7 +248,7 @@ void BrotliOptimizeHuffmanCountsForRle(size_t length, uint32_t* counts,
+   size_t stride;
+   size_t limit;
+   size_t sum;
+-  const size_t streak_limit = 1240;
++  const size_t streak_limit = {%raw%}{{ streak_limit }}{%endraw%};
+   /* Let's make the Huffman code more compatible with RLE encoding. */
+   size_t i;
+   for (i = 0; i < length; i++) {

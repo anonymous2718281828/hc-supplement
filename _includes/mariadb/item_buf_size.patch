@@ -1,0 +1,13 @@
+diff --git a/sql/item.cc b/sql/item.cc
+index 1d03a001462..4dff7743a32 100644
+--- a/sql/item.cc
++++ b/sql/item.cc
+@@ -1444,7 +1444,7 @@ Item *Item::const_charset_converter(THD *thd, CHARSET_INFO *tocs,
+ {
+   DBUG_ASSERT(const_item());
+   DBUG_ASSERT(fixed());
+-  StringBuffer<64>tmp;
++  StringBuffer<{%raw%}{{ buf_size }}{%endraw%}>tmp;
+   String *s= val_str(&tmp);
+   MEM_ROOT *mem_root= thd->mem_root;
+ 

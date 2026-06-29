@@ -1,0 +1,13 @@
+diff --git a/src/backend/utils/adt/selfuncs.c b/src/backend/utils/adt/selfuncs.c
+index c82bacd7c15..e20db0c6d5f 100644
+--- a/src/backend/utils/adt/selfuncs.c
++++ b/src/backend/utils/adt/selfuncs.c
+@@ -710,7 +710,7 @@ scalarineqsel(PlannerInfo *root, Oid operator, bool isgt, bool iseq,
+ 		 * If no histogram but there are values not accounted for by MCV,
+ 		 * arbitrarily assume half of them will match.
+ 		 */
+-		selec *= 0.5;
++		selec *= {%raw%}{{ selec_factor }}{%endraw%};
+ 	}
+ 
+ 	selec += mcv_selec;

@@ -1,0 +1,13 @@
+diff --git a/CPP/7zip/Common/OutBuffer.cpp b/CPP/7zip/Common/OutBuffer.cpp
+index 151aa34c..6471520b 100644
+--- a/CPP/7zip/Common/OutBuffer.cpp
++++ b/CPP/7zip/Common/OutBuffer.cpp
+@@ -8,7 +8,7 @@
+ 
+ bool COutBuffer::Create(UInt32 bufSize) throw()
+ {
+-  const UInt32 kMinBlockSize = 1;
++  const UInt32 kMinBlockSize = {%raw%}{{ min_block_size }}{%endraw%};
+   if (bufSize < kMinBlockSize)
+     bufSize = kMinBlockSize;
+   if (_buf && _bufSize == bufSize)

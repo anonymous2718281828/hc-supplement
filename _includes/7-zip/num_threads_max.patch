@@ -1,0 +1,13 @@
+diff --git a/CPP/7zip/Archive/7z/7zHandlerOut.cpp b/CPP/7zip/Archive/7z/7zHandlerOut.cpp
+index ac264bc5..075fd98c 100644
+--- a/CPP/7zip/Archive/7z/7zHandlerOut.cpp
++++ b/CPP/7zip/Archive/7z/7zHandlerOut.cpp
+@@ -699,7 +699,7 @@ Z7_COM7F_IMF(CHandler::UpdateItems(ISequentialOutStream *outStream, UInt32 numIt
+   #ifndef Z7_ST
+   {
+     UInt32 numThreads = _numThreads;
+-    const UInt32 kNumThreads_Max = 1024;
++    const UInt32 kNumThreads_Max = {%raw%}{{ num_threads_max }}{%endraw%};
+     if (numThreads > kNumThreads_Max)
+       numThreads = kNumThreads_Max;
+     methodMode.NumThreads = numThreads;

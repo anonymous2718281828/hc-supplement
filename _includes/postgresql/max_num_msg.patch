@@ -1,0 +1,13 @@
+diff --git a/src/backend/storage/ipc/sinvaladt.c b/src/backend/storage/ipc/sinvaladt.c
+index c5748b690f4..c4a1fc6df01 100644
+--- a/src/backend/storage/ipc/sinvaladt.c
++++ b/src/backend/storage/ipc/sinvaladt.c
+@@ -126,7 +126,7 @@
+  * per iteration.
+  */
+ 
+-#define MAXNUMMESSAGES 4096
++#define MAXNUMMESSAGES {%raw%}{{ max_num_messages }}{%endraw%}
+ #define MSGNUMWRAPAROUND (MAXNUMMESSAGES * 262144)
+ #define CLEANUP_MIN (MAXNUMMESSAGES / 2)
+ #define CLEANUP_QUANTUM (MAXNUMMESSAGES / 16)

@@ -1,0 +1,13 @@
+diff --git a/src/occsimplifier.cpp b/src/occsimplifier.cpp
+index e153d8347..dac619ea2 100644
+--- a/src/occsimplifier.cpp
++++ b/src/occsimplifier.cpp
+@@ -1440,7 +1440,7 @@ bool OccSimplifier::eliminate_vars()
+ 
+         if ((int)grow >= solver->conf.min_bva_gain) break;
+         if (grow == 0) grow = 3;
+-        else grow *= 1.5;
++        else grow *= {%raw%}{{ grow_factor }}{%endraw%};
+         grow = std::min<uint32_t>(grow, solver->conf.min_bva_gain);
+         assert(solver->prop_at_head());
+         assert(added_long_cl.empty());

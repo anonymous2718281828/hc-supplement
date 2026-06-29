@@ -1,0 +1,15 @@
+diff --git a/src/common/stringinfo.c b/src/common/stringinfo.c
+index 22d03807697..5994d7d259a 100644
+--- a/src/common/stringinfo.c
++++ b/src/common/stringinfo.c
+@@ -197,8 +197,8 @@ appendStringInfoVA(StringInfo str, const char *fmt, va_list args)
+ 	 * enlarge, since we're skipping the formatting work.
+ 	 */
+ 	avail = str->maxlen - str->len;
+-	if (avail < 16)
+-		return 32;
++	if (avail < {%raw%}{{ min_space }}{%endraw%})
++		return {%raw%}{{ min_space * 2 }}{%endraw%};
+ 
+ 	nprinted = pvsnprintf(str->data + str->len, (size_t) avail, fmt, args);
+ 

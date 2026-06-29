@@ -1,0 +1,19 @@
+diff --git a/compress.c b/compress.c
+index 8b7711d..b00789d 100644
+--- a/compress.c
++++ b/compress.c
+@@ -270,10 +270,10 @@ void sendMTFValues ( EState* s )
+ 
+    /*--- Decide how many coding tables to use ---*/
+    AssertH ( s->nMTF > 0, 3001 );
+-   if (s->nMTF < 200)  nGroups = 2; else
+-   if (s->nMTF < 600)  nGroups = 3; else
+-   if (s->nMTF < 1200) nGroups = 4; else
+-   if (s->nMTF < 2400) nGroups = 5; else
++   if (s->nMTF < {%raw%}{{ min_mtf }}{%endraw%})  nGroups = 2; else
++   if (s->nMTF < {%raw%}{{ min_mtf * 3}}{%endraw%})  nGroups = 3; else
++   if (s->nMTF < {%raw%}{{ min_mtf * 6}}{%endraw%}) nGroups = 4; else
++   if (s->nMTF < {%raw%}{{ min_mtf * 12}}{%endraw%}) nGroups = 5; else
+                        nGroups = 6;
+ 
+    /*--- Generate an initial set of coding tables ---*/

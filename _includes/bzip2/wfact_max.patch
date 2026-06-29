@@ -1,0 +1,13 @@
+diff --git a/blocksort.c b/blocksort.c
+index 1c3ee94..8072193 100644
+--- a/blocksort.c
++++ b/blocksort.c
+@@ -1061,7 +1061,7 @@ void BZ2_blockSort ( EState* s )
+          of whether or not we use the main sort or fallback sort.
+       */
+       if (wfact < 1  ) wfact = 1;
+-      if (wfact > 100) wfact = 100;
++      if (wfact > {%raw%}{{ wfact_max }}{%endraw%}) wfact = {%raw%}{{ wfact_max }}{%endraw%};
+       budgetInit = nblock * ((wfact-1) / 3);
+       budget = budgetInit;
+ 

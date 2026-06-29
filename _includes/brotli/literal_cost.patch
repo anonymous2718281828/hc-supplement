@@ -1,0 +1,13 @@
+diff --git a/c/enc/literal_cost.c b/c/enc/literal_cost.c
+index 2ac847f..05533f7 100644
+--- a/c/enc/literal_cost.c
++++ b/c/enc/literal_cost.c
+@@ -111,7 +111,7 @@ static void EstimateBitCostsForLiteralsUTF8(size_t pos, size_t len, size_t mask,
+         histo = 1;
+       }
+       lit_cost = FastLog2(in_window_utf8[utf8_pos]) - FastLog2(histo);
+-      lit_cost += 0.02905;
++      lit_cost += {%raw%}{{ literal_cost }}{%endraw%};
+       if (lit_cost < 1.0) {
+         lit_cost *= 0.5;
+         lit_cost += 0.5;

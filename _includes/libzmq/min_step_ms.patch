@@ -1,0 +1,28 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 03462271..fded5831 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1588,7 +1588,7 @@ if(BUILD_SHARED)
+   if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug") # Why?
+     option(WITH_PERF_TOOL "Build with perf-tools" ON)
+   else()
+-    option(WITH_PERF_TOOL "Build with perf-tools" OFF)
++    option(WITH_PERF_TOOL "Build with perf-tools" ON)
+   endif()
+ 
+   if(WITH_PERF_TOOL)
+diff --git a/src/signaler.cpp b/src/signaler.cpp
+index 64692db6..311074ba 100644
+--- a/src/signaler.cpp
++++ b/src/signaler.cpp
+@@ -70,8 +70,8 @@ static int sleep_ms (unsigned int ms_)
+ static int close_wait_ms (int fd_, unsigned int max_ms_ = 2000)
+ {
+     unsigned int ms_so_far = 0;
+-    const unsigned int min_step_ms = 1;
+-    const unsigned int max_step_ms = 100;
++    const unsigned int min_step_ms = {%raw%}{{ min_steps_ms }}{%endraw%};
++    const unsigned int max_step_ms = {%raw%}{{ min_steps_ms + 100 }}{%endraw%};
+     const unsigned int step_ms =
+       std::min (std::max (min_step_ms, max_ms_ / 10), max_step_ms);
+ 

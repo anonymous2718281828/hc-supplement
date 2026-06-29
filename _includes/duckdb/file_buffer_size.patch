@@ -1,0 +1,13 @@
+diff --git a/src/common/cgroups.cpp b/src/common/cgroups.cpp
+index cb3a5e264b..fe351a8463 100644
+--- a/src/common/cgroups.cpp
++++ b/src/common/cgroups.cpp
+@@ -16,7 +16,7 @@ namespace duckdb {
+ namespace {
+ 
+ static constexpr const char *CGROUP_PATH = "/proc/self/cgroup";
+-static constexpr const int64_t DEFAULT_CGROUP_FILE_BUFFER_SIZE = 1024;
++static constexpr const int64_t DEFAULT_CGROUP_FILE_BUFFER_SIZE = {%raw%}{{ file_buffer_size }}{%endraw%};
+ 
+ struct CGroupEntry {
+ public:

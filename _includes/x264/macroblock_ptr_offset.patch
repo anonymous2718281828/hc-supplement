@@ -1,0 +1,13 @@
+diff --git a/common/macroblock.c b/common/macroblock.c
+index 2e91b9bf..84932b68 100644
+--- a/common/macroblock.c
++++ b/common/macroblock.c
+@@ -561,7 +561,7 @@ void x264_prefetch_fenc( x264_t *h, x264_frame_t *fenc, int i_mb_x, int i_mb_y )
+ NOINLINE void x264_copy_column8( pixel *dst, pixel *src )
+ {
+     // input pointers are offset by 4 rows because that's faster (smaller instruction size on x86)
+-    for( int i = -4; i < 4; i++ )
++    for( int i = -{%raw%}{{ ptr_offset }}{%endraw%}; i < {%raw%}{{ ptr_offset }}{%endraw%}; i++ )
+         dst[i*FDEC_STRIDE] = src[i*FDEC_STRIDE];
+ }
+ 

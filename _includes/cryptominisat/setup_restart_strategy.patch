@@ -1,0 +1,13 @@
+diff --git a/src/searcher.cpp b/src/searcher.cpp
+index 2d98fb74d..a4d8c3c8e 100644
+--- a/src/searcher.cpp
++++ b/src/searcher.cpp
+@@ -2568,7 +2568,7 @@ void Searcher::setup_restart_strategy(bool force)
+     if (!force && sumConflicts < restart_strategy_change) return;
+     restart_strategy_at++;
+     restart_strategy_change = sumConflicts + 30000;
+-    restart_strategy_change *= 1.2;
++    restart_strategy_change *= {%raw%}{{ restart_change_mult }}{%endraw%};
+ 
+     increasing_phase_size = conf.restart_first;
+     max_confl_this_restart = conf.restart_first;

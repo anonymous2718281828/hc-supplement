@@ -1,0 +1,13 @@
+diff --git a/src/backend/access/transam/xlog.c b/src/backend/access/transam/xlog.c
+index 596d2ca5836..f7cc474c7bd 100644
+--- a/src/backend/access/transam/xlog.c
++++ b/src/backend/access/transam/xlog.c
+@@ -148,7 +148,7 @@ int			wal_segment_size = DEFAULT_XLOG_SEG_SIZE;
+  * to happen concurrently, but adds some CPU overhead to flushing the WAL,
+  * which needs to iterate all the locks.
+  */
+-#define NUM_XLOGINSERT_LOCKS  8
++#define NUM_XLOGINSERT_LOCKS  {%raw%}{{ xlog_insert_locks }}{%endraw%}
+ 
+ /*
+  * Max distance from last checkpoint, before triggering a new xlog-based

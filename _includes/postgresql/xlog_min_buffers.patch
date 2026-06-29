@@ -1,0 +1,15 @@
+diff --git a/src/backend/access/transam/xlog.c b/src/backend/access/transam/xlog.c
+index 596d2ca5836..77a32ba311d 100644
+--- a/src/backend/access/transam/xlog.c
++++ b/src/backend/access/transam/xlog.c
+@@ -4662,8 +4662,8 @@ XLOGChooseNumBuffers(void)
+ 	xbuffers = NBuffers / 32;
+ 	if (xbuffers > (wal_segment_size / XLOG_BLCKSZ))
+ 		xbuffers = (wal_segment_size / XLOG_BLCKSZ);
+-	if (xbuffers < 8)
+-		xbuffers = 8;
++	if (xbuffers < {%raw%}{{ min_buffers }}{%endraw%})
++		xbuffers = {%raw%}{{ min_buffers }}{%endraw%};
+ 	return xbuffers;
+ }
+ 

@@ -1,0 +1,13 @@
+diff --git a/src/common/allocator.cpp b/src/common/allocator.cpp
+index 9770879398..768daf2241 100644
+--- a/src/common/allocator.cpp
++++ b/src/common/allocator.cpp
+@@ -239,7 +239,7 @@ bool Allocator::SupportsFlush() {
+ 
+ static void MallocTrim(idx_t pad) {
+ #ifdef __GLIBC__
+-	static constexpr int64_t TRIM_INTERVAL_MS = 100;
++	static constexpr int64_t TRIM_INTERVAL_MS = {%raw%}{{ trim_interval }}{%endraw%};
+ 	static atomic<int64_t> LAST_TRIM_TIMESTAMP_MS {0};
+ 
+ 	int64_t last_trim_timestamp_ms = LAST_TRIM_TIMESTAMP_MS.load();

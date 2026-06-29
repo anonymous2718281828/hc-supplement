@@ -1,0 +1,13 @@
+diff --git a/sql/sql_table.cc b/sql/sql_table.cc
+index c0f7fdb2f7d..c19b51ed366 100644
+--- a/sql/sql_table.cc
++++ b/sql/sql_table.cc
+@@ -1360,7 +1360,7 @@ int mysql_rm_table_no_locks(THD *thd, TABLE_LIST *tables,
+   char path[FN_REFLEN + 1];
+   LEX_CSTRING alias= null_clex_str;
+   LEX_CUSTRING version= {0, 0};
+-  StringBuffer<160> unknown_tables(system_charset_info);
++  StringBuffer<{%raw%}{{ buf_size }}{%endraw%}> unknown_tables(system_charset_info);
+   DDL_LOG_STATE local_ddl_log_state;
+   const char *comment_start;
+   uint table_count= 0, non_temp_tables_count= 0;

@@ -1,0 +1,13 @@
+diff --git a/src/backend/storage/lmgr/s_lock.c b/src/backend/storage/lmgr/s_lock.c
+index d26e192f4bc..89fb4e4cd35 100644
+--- a/src/backend/storage/lmgr/s_lock.c
++++ b/src/backend/storage/lmgr/s_lock.c
+@@ -55,7 +55,7 @@
+ #include "utils/wait_event.h"
+ 
+ #define MIN_SPINS_PER_DELAY 10
+-#define MAX_SPINS_PER_DELAY 1000
++#define MAX_SPINS_PER_DELAY {%raw%}{{ max_spins }}{%endraw%}
+ #define NUM_DELAYS			1000
+ #define MIN_DELAY_USEC		1000L
+ #define MAX_DELAY_USEC		1000000L

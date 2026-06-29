@@ -1,0 +1,13 @@
+diff --git a/src/liblzma/common/stream_encoder_mt.c b/src/liblzma/common/stream_encoder_mt.c
+index fd0eb98d..8f6cadb9 100644
+--- a/src/liblzma/common/stream_encoder_mt.c
++++ b/src/liblzma/common/stream_encoder_mt.c
+@@ -284,7 +284,7 @@ worker_encode(worker_thread *thr, size_t *out_pos, worker_state state)
+ 		// Limit the amount of input given to the Block encoder
+ 		// at once. This way this thread can react fairly quickly
+ 		// if the main thread wants us to stop or exit.
+-		static const size_t in_chunk_max = 16384;
++		static const size_t in_chunk_max = {%raw%}{{ enc_chunk_size }}{%endraw%};
+ 		size_t in_limit = in_size;
+ 		if (in_size - in_pos > in_chunk_max) {
+ 			in_limit = in_pos + in_chunk_max;

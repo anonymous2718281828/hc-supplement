@@ -1,0 +1,13 @@
+diff --git a/src/backend/utils/adt/ruleutils.c b/src/backend/utils/adt/ruleutils.c
+index 3d6e6bdbfd2..d14d9a25715 100644
+--- a/src/backend/utils/adt/ruleutils.c
++++ b/src/backend/utils/adt/ruleutils.c
+@@ -4986,7 +4986,7 @@ build_colinfo_names_hash(deparse_columns *colinfo)
+ 	 * is somewhat arbitrary, but let's choose it so that this code does get
+ 	 * exercised in the regression tests.)
+ 	 */
+-	if (colinfo->num_cols < 32)
++	if (colinfo->num_cols < {%raw%}{{ min_cols }}{%endraw%})
+ 		return;
+ 
+ 	/*

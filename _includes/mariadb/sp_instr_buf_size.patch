@@ -1,0 +1,13 @@
+diff --git a/sql/sp_instr.cc b/sql/sp_instr.cc
+index ac965cfd65c..32b04a6290b 100644
+--- a/sql/sp_instr.cc
++++ b/sql/sp_instr.cc
+@@ -221,7 +221,7 @@ subst_spvars(THD *thd, sp_instr *instr, LEX_STRING *query_str)
+ 
+   Dynamic_array<Rewritable_query_parameter*> rewritables(PSI_INSTRUMENT_MEM);
+   char *pbuf;
+-  StringBuffer<512> qbuf;
++  StringBuffer<{%raw%}{{ buf_size }}{%endraw%}> qbuf;
+   Copy_query_with_rewrite acc(thd, query_str->str, query_str->length, &qbuf);
+ 
+   /* Find rewritable Items used in this statement */

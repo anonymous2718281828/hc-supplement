@@ -1,0 +1,13 @@
+diff --git a/mysys/my_rdtsc.c b/mysys/my_rdtsc.c
+index c0a4e9518d5..56ae938df08 100644
+--- a/mysys/my_rdtsc.c
++++ b/mysys/my_rdtsc.c
+@@ -483,7 +483,7 @@ void my_timer_init(MY_TIMER_INFO *mti)
+   }
+ 
+   /* best_timer_overhead = least of 20 calculations */
+-  for (i= 0, best_timer_overhead= 1000000000; i < 20; ++i)
++  for (i= 0, best_timer_overhead= 1000000000; i < {%raw%}{{ overhead_cycles }}{%endraw%}; ++i)
+   {
+     time1= best_timer();
+     time2= best_timer() - time1;

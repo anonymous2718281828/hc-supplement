@@ -1,0 +1,13 @@
+diff --git a/mysys/my_rdtsc.c b/mysys/my_rdtsc.c
+index c0a4e9518d5..428af69e5c6 100644
+--- a/mysys/my_rdtsc.c
++++ b/mysys/my_rdtsc.c
+@@ -262,7 +262,7 @@ static void my_timer_init_overhead(ulonglong *overhead,
+   int i;
+ 
+   /* *overhead, least of 20 calculations - cycles.overhead */
+-  for (i= 0, *overhead= 1000000000; i < 20; ++i)
++  for (i= 0, *overhead= 1000000000; i < {%raw%}{{ overhead_cycles }}{%endraw%}; ++i)
+   {
+     time1= cycle_timer();
+     this_timer(); /* rather than 'time_tmp= timer();' */

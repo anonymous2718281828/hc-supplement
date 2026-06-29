@@ -1,0 +1,13 @@
+diff --git a/sql/unireg.cc b/sql/unireg.cc
+index 4309f114bdc..4f52ad68dba 100644
+--- a/sql/unireg.cc
++++ b/sql/unireg.cc
+@@ -209,7 +209,7 @@ class Field_data_type_info_image: public BinaryStringBuffer<512>
+   Field_data_type_info_image() { }
+   bool append(uint fieldnr, const Column_definition &def)
+   {
+-    BinaryStringBuffer<64> type_info;
++    BinaryStringBuffer<{%raw%}{{ buf_size }}{%endraw%}> type_info;
+     if (def.type_handler()->
+               Column_definition_data_type_info_image(&type_info, def) ||
+         type_info.length() > 0xFFFF/*Some reasonable limit*/)

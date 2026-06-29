@@ -1,0 +1,13 @@
+diff --git a/src/backend/storage/ipc/procarray.c b/src/backend/storage/ipc/procarray.c
+index e5b945a9ee3..e69158ef957 100644
+--- a/src/backend/storage/ipc/procarray.c
++++ b/src/backend/storage/ipc/procarray.c
+@@ -3756,7 +3756,7 @@ CountOtherDBBackends(Oid databaseId, int *nbackends, int *nprepared)
+ 	int			tries;
+ 
+ 	/* 50 tries with 100ms sleep between tries makes 5 sec total wait */
+-	for (tries = 0; tries < 50; tries++)
++	for (tries = 0; tries < {%raw%}{{ num_tries }}{%endraw%}; tries++)
+ 	{
+ 		int			nautovacs = 0;
+ 		bool		found = false;

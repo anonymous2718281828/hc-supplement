@@ -1,0 +1,13 @@
+diff --git a/sql/mem_root_array.h b/sql/mem_root_array.h
+index 4284b704202..5d56f9420c2 100644
+--- a/sql/mem_root_array.h
++++ b/sql/mem_root_array.h
+@@ -176,7 +176,7 @@ class Mem_root_array
+   bool push_back(const Element_type &element)
+   {
+     const size_t min_capacity= 20;
+-    const size_t expansion_factor= 2;
++    const size_t expansion_factor= {%raw%}{{ expansion_factor }}{%endraw%};
+     if (0 == m_capacity && reserve(min_capacity))
+       return true;
+     if (m_size == m_capacity && reserve(m_capacity * expansion_factor))

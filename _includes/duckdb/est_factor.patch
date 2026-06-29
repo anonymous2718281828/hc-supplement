@@ -1,0 +1,13 @@
+diff --git a/src/common/types/hyperloglog.cpp b/src/common/types/hyperloglog.cpp
+index 3ccd1f0d9f..35ecb49f9d 100644
+--- a/src/common/types/hyperloglog.cpp
++++ b/src/common/types/hyperloglog.cpp
+@@ -175,7 +175,7 @@ public:
+ 
+ 		// Using the average will ALWAYS overestimate, so we reduce it a bit here
+ 		if (avg > 10) {
+-			avg *= 0.75;
++			avg *= {%raw%}{{ est_factor }}{%endraw%};
+ 		} else if (avg > 2) {
+ 			avg -= 2;
+ 		}

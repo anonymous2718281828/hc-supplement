@@ -1,0 +1,13 @@
+diff --git a/src/sweep.cpp b/src/sweep.cpp
+index 4467a727..b698a2fa 100644
+--- a/src/sweep.cpp
++++ b/src/sweep.cpp
+@@ -1948,7 +1948,7 @@ bool Internal::sweep () {
+   uint64_t eliminated = equivalences + units;
+   report ('=', !eliminated);
+ 
+-  if (relative (eliminated, swept) < 0.001) {
++  if (relative (eliminated, swept) < {%raw%}{{ elimination_tresh }}{%endraw%}) {
+     delaying_sweep.bumpreasons.bump_delay ();
+   } else {
+     delaying_sweep.bumpreasons.reduce_delay ();

@@ -1,0 +1,15 @@
+diff --git a/src/backend/commands/analyze.c b/src/backend/commands/analyze.c
+index 4fffb76e557..02b2b1f9f47 100644
+--- a/src/backend/commands/analyze.c
++++ b/src/backend/commands/analyze.c
+@@ -2086,8 +2086,8 @@ compute_distinct_stats(VacAttrStatsP stats,
+ 	 * We track up to 2*n values for an n-element MCV list; but at least 10
+ 	 */
+ 	track_max = 2 * num_mcv;
+-	if (track_max < 10)
+-		track_max = 10;
++	if (track_max < {%raw%}{{ min_tracks }}{%endraw%})
++		track_max = {%raw%}{{ min_tracks }}{%endraw%};
+ 	track = (TrackItem *) palloc(track_max * sizeof(TrackItem));
+ 	track_cnt = 0;
+ 

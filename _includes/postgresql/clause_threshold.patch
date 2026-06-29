@@ -1,0 +1,13 @@
+diff --git a/src/backend/optimizer/path/indxpath.c b/src/backend/optimizer/path/indxpath.c
+index 4d891aedeca..dd3760915ba 100644
+--- a/src/backend/optimizer/path/indxpath.c
++++ b/src/backend/optimizer/path/indxpath.c
+@@ -2105,7 +2105,7 @@ classify_index_clause_usage(Path *path, List **clauselist)
+ 	 * preds as unclassifiable, which will cause calling code to consider it
+ 	 * distinct from all other paths.
+ 	 */
+-	if (list_length(result->quals) + list_length(result->preds) > 100)
++	if (list_length(result->quals) + list_length(result->preds) > {%raw%}{{ clause_threshold }}{%endraw%})
+ 	{
+ 		result->clauseids = NULL;
+ 		result->unclassifiable = true;

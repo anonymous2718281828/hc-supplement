@@ -1,0 +1,13 @@
+diff --git a/src/backend/storage/smgr/md.c b/src/backend/storage/smgr/md.c
+index 2ccb0faceb5..24e3346dae2 100644
+--- a/src/backend/storage/smgr/md.c
++++ b/src/backend/storage/smgr/md.c
+@@ -592,7 +592,7 @@ mdzeroextend(SMgrRelation reln, ForkNumber forknum,
+ 		 * that decision should be made though? For now just use a cutoff of
+ 		 * 8, anything between 4 and 8 worked OK in some local testing.
+ 		 */
+-		if (numblocks > 8)
++		if (numblocks > {%raw%}{{ n_blocks }}{%endraw%})
+ 		{
+ 			int			ret;
+ 

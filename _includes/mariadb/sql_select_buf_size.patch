@@ -1,0 +1,13 @@
+diff --git a/sql/sql_select.cc b/sql/sql_select.cc
+index 9b45468e5a5..1577929693a 100644
+--- a/sql/sql_select.cc
++++ b/sql/sql_select.cc
+@@ -31040,7 +31040,7 @@ bool JOIN_TAB::save_explain_data(Explain_table_access *eta,
+         table_list->schema_table->i_s_requested_object & OPTIMIZE_I_S_TABLE)
+     {
+       IS_table_read_plan *is_table_read_plan= table_list->is_table_read_plan;
+-      StringBuffer<64> key_name_buf;
++      StringBuffer<{%raw%}{{ buf_size }}{%endraw%}> key_name_buf;
+       if (is_table_read_plan->trivial_show_command ||
+           is_table_read_plan->has_db_lookup_value())
+       {

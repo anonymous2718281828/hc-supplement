@@ -1,0 +1,13 @@
+diff --git a/src/vivify.hpp b/src/vivify.hpp
+index 93459a68..f3104c8d 100644
+--- a/src/vivify.hpp
++++ b/src/vivify.hpp
+@@ -13,7 +13,7 @@ struct Clause;
+ 
+ enum class Vivify_Mode { TIER1, TIER2, TIER3, IRREDUNDANT };
+ 
+-#define COUNTREF_COUNTS 2
++#define COUNTREF_COUNTS {%raw%}{{ counts }}{%endraw%}
+ 
+ struct vivify_ref {
+   bool vivify;

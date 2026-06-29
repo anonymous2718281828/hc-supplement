@@ -1,0 +1,13 @@
+diff --git a/src/backend/utils/mmgr/dsa.c b/src/backend/utils/mmgr/dsa.c
+index 17d4f7a7a06..b6703f38104 100644
+--- a/src/backend/utils/mmgr/dsa.c
++++ b/src/backend/utils/mmgr/dsa.c
+@@ -108,7 +108,7 @@ typedef size_t dsa_segment_index;
+  * How many bins of segments do we have?  The bins are used to categorize
+  * segments by their largest contiguous run of free pages.
+  */
+-#define DSA_NUM_SEGMENT_BINS 16
++#define DSA_NUM_SEGMENT_BINS {%raw%}{{ num_seg_bins }}{%endraw%}
+ 
+ /*
+  * What is the lowest bin that holds segments that *might* have n contiguous

@@ -1,0 +1,13 @@
+diff --git a/src/backend/storage/ipc/sinval.c b/src/backend/storage/ipc/sinval.c
+index 6eea8e87169..266b0b11fb3 100644
+--- a/src/backend/storage/ipc/sinval.c
++++ b/src/backend/storage/ipc/sinval.c
+@@ -69,7 +69,7 @@ void
+ ReceiveSharedInvalidMessages(void (*invalFunction) (SharedInvalidationMessage *msg),
+ 							 void (*resetFunction) (void))
+ {
+-#define MAXINVALMSGS 32
++#define MAXINVALMSGS {%raw%}{{ max_inval_msg }}{%endraw%}
+ 	static SharedInvalidationMessage messages[MAXINVALMSGS];
+ 
+ 	/*

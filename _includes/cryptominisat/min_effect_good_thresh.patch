@@ -1,0 +1,13 @@
+diff --git a/src/solver.cpp b/src/solver.cpp
+index 51627380b..c3c526bd5 100644
+--- a/src/solver.cpp
++++ b/src/solver.cpp
+@@ -1118,7 +1118,7 @@ void Solver::check_minimization_effectiveness(const lbool status)
+                 << " % lits removed --> disabling"
+                 << endl;
+             }
+-        } else if (remPercent > 7.0) {
++        } else if (remPercent > {%raw%}{{ min_effect_good_thresh }}{%endraw%}) {
+             more_red_minim_limit_binary_actual = 3*conf.more_red_minim_limit_binary;
+             if (conf.verbosity) {
+                 cout

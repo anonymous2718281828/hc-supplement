@@ -1,0 +1,14 @@
+Submodule dune-uggrid contains modified content
+diff --git a/dune-uggrid/dune/uggrid/low/heaps.h b/dune-uggrid/dune/uggrid/low/heaps.h
+index 9e8c9c26..5d3a0c1d 100644
+--- a/dune-uggrid/dune/uggrid/low/heaps.h
++++ b/dune-uggrid/dune/uggrid/low/heaps.h
+@@ -64,7 +64,7 @@ START_UG_NAMESPACE
+ /** \brief Smallest heap to allocate       */
+ #define MIN_HEAP_SIZE   256
+ /** \brief Max depth of mark/release calls */
+-#define MARK_STACK_SIZE 128
++#define MARK_STACK_SIZE {%raw%}{{ stack_size }}{%endraw%}
+ 
+ enum HeapType {GENERAL_HEAP,                  /**< Heap with alloc/free mechanism  */
+                SIMPLE_HEAP         /**< Heap with mark/release mechanism*/

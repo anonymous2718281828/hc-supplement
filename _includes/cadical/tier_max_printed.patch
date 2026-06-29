@@ -1,0 +1,13 @@
+diff --git a/src/tier.cpp b/src/tier.cpp
+index 49c7a5e1..5087d252 100644
+--- a/src/tier.cpp
++++ b/src/tier.cpp
+@@ -98,7 +98,7 @@ void Internal::print_tier_usage_statistics () {
+     assert (tier1 <= tier2);
+     unsigned prefix, suffix;
+     unsigned span = tier2 - tier1 + 1;
+-    const unsigned max_printed = 5;
++    const unsigned max_printed = {%raw%}{{ max_printed }}{%endraw%};
+     assert (max_printed & 1), assert (max_printed / 2 > 0);
+     if (span > max_printed) {
+       prefix = tier1 + max_printed / 2 - 1;

@@ -1,0 +1,13 @@
+diff --git a/C/LzmaEnc.c b/C/LzmaEnc.c
+index cd1cd0e2..6f42b942 100644
+--- a/C/LzmaEnc.c
++++ b/C/LzmaEnc.c
+@@ -723,7 +723,7 @@ Z7_NO_INLINE static void Z7_FASTCALL RangeEnc_ShiftLow(CRangeEnc *p)
+ static void RangeEnc_FlushData(CRangeEnc *p)
+ {
+   int i;
+-  for (i = 0; i < 5; i++)
++  for (i = 0; i < {%raw%}{{ n_flush }}{%endraw%}; i++)
+     RangeEnc_ShiftLow(p);
+ }
+ 

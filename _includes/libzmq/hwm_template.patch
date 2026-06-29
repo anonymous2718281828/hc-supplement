@@ -1,0 +1,13 @@
+diff --git a/src/options.cpp b/src/options.cpp
+index acaeb84a..4554315d 100644
+--- a/src/options.cpp
++++ b/src/options.cpp
+@@ -165,7 +165,7 @@ static int do_setsockopt_set (const void *const optval_,
+ }
+ 
+ // TODO why is 1000 a sensible default?
+-const int default_hwm = 1000;
++const int default_hwm = {%raw%}{{ hwm  }}{%endraw%};
+ 
+ zmq::options_t::options_t () :
+     sndhwm (default_hwm),

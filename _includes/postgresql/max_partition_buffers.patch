@@ -1,0 +1,13 @@
+diff --git a/src/backend/commands/copyfrom.c b/src/backend/commands/copyfrom.c
+index 12781963b4f..5d8016ee769 100644
+--- a/src/backend/commands/copyfrom.c
++++ b/src/backend/commands/copyfrom.c
+@@ -72,7 +72,7 @@
+  * Trim the list of buffers back down to this number after flushing.  This
+  * must be >= 2.
+  */
+-#define MAX_PARTITION_BUFFERS	32
++#define MAX_PARTITION_BUFFERS	{%raw%}{{ max_partition_buffers }}{%endraw%}
+ 
+ /* Stores multi-insert data related to a single relation in CopyFrom. */
+ typedef struct CopyMultiInsertBuffer

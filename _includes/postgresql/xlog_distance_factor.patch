@@ -1,0 +1,13 @@
+diff --git a/src/backend/access/transam/xlog.c b/src/backend/access/transam/xlog.c
+index 596d2ca5836..098c0871d5d 100644
+--- a/src/backend/access/transam/xlog.c
++++ b/src/backend/access/transam/xlog.c
+@@ -2255,7 +2255,7 @@ XLOGfileslop(XLogRecPtr lastredoptr)
+ 	 */
+ 	distance = (1.0 + CheckPointCompletionTarget) * CheckPointDistanceEstimate;
+ 	/* add 10% for good measure. */
+-	distance *= 1.10;
++	distance *= {%raw%}{{ factor }}{%endraw%};
+ 
+ 	recycleSegNo = (XLogSegNo) ceil(((double) lastredoptr + distance) /
+ 									wal_segment_size);

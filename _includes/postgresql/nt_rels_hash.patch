@@ -1,0 +1,13 @@
+diff --git a/src/backend/executor/nodeModifyTable.c b/src/backend/executor/nodeModifyTable.c
+index 4c5647ac38a..6da9bbb973a 100644
+--- a/src/backend/executor/nodeModifyTable.c
++++ b/src/backend/executor/nodeModifyTable.c
+@@ -5107,7 +5107,7 @@ ExecInitModifyTable(ModifyTable *node, EState *estate, int eflags)
+ #ifdef USE_ASSERT_CHECKING
+ #define MT_NRELS_HASH 4
+ #else
+-#define MT_NRELS_HASH 64
++#define MT_NRELS_HASH {%raw%}{{ nrels }}{%endraw%}
+ #endif
+ 	if (nrels >= MT_NRELS_HASH)
+ 	{

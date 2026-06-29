@@ -1,0 +1,13 @@
+diff --git a/blocksort.c b/blocksort.c
+index 1c3ee94..5536dd5 100644
+--- a/blocksort.c
++++ b/blocksort.c
+@@ -613,7 +613,7 @@ UChar mmed3 ( UChar a, UChar b, UChar c )
+      tz = nextD [az]; nextD [az] = nextD [bz]; nextD [bz] = tz; }
+ 
+ 
+-#define MAIN_QSORT_SMALL_THRESH 20
++#define MAIN_QSORT_SMALL_THRESH {%raw%}{{ qsort_small_thresh }}{%endraw%}
+ #define MAIN_QSORT_DEPTH_THRESH (BZ_N_RADIX + BZ_N_QSORT)
+ #define MAIN_QSORT_STACK_SIZE 100
+ 

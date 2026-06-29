@@ -1,0 +1,13 @@
+diff --git a/src/backend/optimizer/util/clauses.c b/src/backend/optimizer/util/clauses.c
+index 593d91454ab..06e74ff53fc 100644
+--- a/src/backend/optimizer/util/clauses.c
++++ b/src/backend/optimizer/util/clauses.c
+@@ -2270,7 +2270,7 @@ eval_const_expressions(PlannerInfo *root, Node *node)
+ 	return eval_const_expressions_mutator(node, &context);
+ }
+ 
+-#define MIN_ARRAY_SIZE_FOR_HASHED_SAOP 9
++#define MIN_ARRAY_SIZE_FOR_HASHED_SAOP {%raw%}{{ min_size_soap }}{%endraw%}
+ /*--------------------
+  * convert_saop_to_hashed_saop
+  *

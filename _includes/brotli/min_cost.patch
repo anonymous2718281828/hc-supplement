@@ -1,0 +1,13 @@
+diff --git a/c/enc/backward_references_hq.c b/c/enc/backward_references_hq.c
+index 6325032..8effbc0 100644
+--- a/c/enc/backward_references_hq.c
++++ b/c/enc/backward_references_hq.c
+@@ -330,7 +330,7 @@ static size_t ComputeMinimumCopyLength(const float start_cost,
+     if (len == next_len_offset) {
+       /* We reached the next copy length code bucket, so we add one more
+          extra bit to the minimum cost. */
+-      min_cost += 1.0f;
++      min_cost += {%raw%}{{ min_cost }}{%endraw%};
+       next_len_offset += next_len_bucket;
+       next_len_bucket *= 2;
+     }

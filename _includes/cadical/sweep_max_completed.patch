@@ -1,0 +1,13 @@
+diff --git a/src/sweep.cpp b/src/sweep.cpp
+index 4467a727..124cc23e 100644
+--- a/src/sweep.cpp
++++ b/src/sweep.cpp
+@@ -239,7 +239,7 @@ void Internal::init_sweeper (Sweeper &sweeper) {
+   }
+ 
+   unsigned completed = stats.sweep_completed;
+-  const unsigned max_completed = 32;
++  const unsigned max_completed = {%raw%}{{ max_completed }}{%endraw%};
+   if (completed > max_completed)
+     completed = max_completed;
+ 

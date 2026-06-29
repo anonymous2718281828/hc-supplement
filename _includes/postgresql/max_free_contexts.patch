@@ -1,0 +1,13 @@
+diff --git a/src/backend/utils/mmgr/aset.c b/src/backend/utils/mmgr/aset.c
+index bcb55296c43..e208e76dfac 100644
+--- a/src/backend/utils/mmgr/aset.c
++++ b/src/backend/utils/mmgr/aset.c
+@@ -238,7 +238,7 @@ typedef struct AllocBlockData
+  *
+  * Contexts in a freelist are chained via their nextchild pointers.
+  */
+-#define MAX_FREE_CONTEXTS 100	/* arbitrary limit on freelist length */
++#define MAX_FREE_CONTEXTS {%raw%}{{ max_free_contexts }}{%endraw%}	/* arbitrary limit on freelist length */
+ 
+ /* Obtain the keeper block for an allocation set */
+ #define KeeperBlock(set) \
