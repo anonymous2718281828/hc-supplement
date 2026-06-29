@@ -1,0 +1,13 @@
+header:
+  - url: /
+    title: Hidden Configurability
+  - url: /ast_patterns
+    title: AST Patterns
+  - url: /data
+    title: Data Availability
+  - url: /settings
+    title: Settings
+  - url: /plots
+    title: Additional Plots
+  - url: /reproduction
+    title: Reproducing
