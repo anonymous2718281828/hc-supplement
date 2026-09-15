@@ -1,9 +1,9 @@
 ---
-title: Settings and Configuration Alternatives
+title: Execution Settings
 layout: default
 ---
 
-# Settings
+# Execution Setting
 
 In the following we give an overview of the metrics, workloads and configurations used for the individual subject systems.
 In the end we provide, for each subject system, a mapping from setting ID to the triple of configuration, workload and metric. [Jump to mappings](#setting-mapping)

@@ -6,7 +6,7 @@ header:
   - url: /data
     title: Data Availability
   - url: /settings
-    title: Settings
+    title: Execution Settings
   - url: /config_alts
     title: Configuration Alternatives
   - url: /plots
