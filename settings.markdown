@@ -112,7 +112,33 @@ For a subset of our subject systems, we additionally test different configuratio
 The following section provides an overview of the configurations used for each subject system.
 
 ### Compression Domain (7zip, brotli, bzip2, lrzip, xz)
-In the compression domain, we test, in addition to the default setting, the minimum, maximum and mean compression level.
+In the compression domain, we test, in addition to the default setting, the minimum, maximum and median compression level.
+
+The following table lists the internally used configuration IDs of the projects and the corresponding command line arguments for the compression level:
+
+| Project | Configuration ID | Command Line Argument | Description |
+|---------|-----------------|----------------------|-------------|
+| 7Zip    | 0 |  | Default configuration |
+| 7Zip    | 1 | `-mx=1` | Minimum compression level |
+| 7Zip    | 2 | `-mx=5` | Median compression level |
+| 7Zip    | 3 | `-mx=9` | Maximum compression level |
+| brotli  | 25 |  | Default configuration |
+| brotli  | 26 | `-0` | Minimum compression level |
+| brotli  | 27 | `-5` | Median compression level |
+| brotli  | 28 | `-9` | Maximum compression level |
+| bzip2   | 0 |  | Default configuration |
+| bzip2   | 1 | `-1` | Minimum compression level |
+| bzip2   | 2 | `-5` | Median compression level |
+| bzip2   | 3 | `-9` | Maximum compression level |
+| lrzip   | 0 | `-L 1` | Minimum compression level |
+| lrzip   | 1 | `-L 5` | Median compression level |
+| lrzip   | 2 | `-L 9` | Maximum compression level |
+| lrzip   | 3 |  | Default configuration |
+| xz     | 0 | `-0` | Minimum compression level |
+| xz     | 1 | `-5` | Median compression level |
+| xz     | 2 | `-9` | Maximum compression level |
+| xz     | 3 |  | Default configuration |
+
 
 ### Dune
 For Dune, we configure the binary with three different solvers:
@@ -143,9 +169,10 @@ For x264, we use, in addition to the default configuration, the following preset
 
 ## {{ project.name }}
 
-<details>
-<summary>Click to show mapping for {{ project.name }} </summary>
-
+<details style="background:#d3d3d3;border-left:5px solid #a9a9a9;padding:0.75em;border-radius:4px;">
+  <summary style="font-weight:bold;cursor:pointer;">
+    Click to show
+  </summary>
 
 {% include {{ project.name | downcase }}/settings.html %}
 

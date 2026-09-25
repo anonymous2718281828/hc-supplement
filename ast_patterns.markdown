@@ -2,6 +2,11 @@
 layout: default
 title: AST Patterns
 ---
+# Implementation
+The implementation of our approach is based on the Clang compiler framework. We use the Clang AST Matchers to define patterns that match candidate locations in the source code.
+
+A full implementation is available as open-source software: [https://github.com/se-sic/HVar-Detector](https://github.com/se-sic/HVar-Detector)
+
 # Candidate Locations
 
 In the following sub-page, we give a brief overview of the AST patterns that we match to identify candidate locations.
