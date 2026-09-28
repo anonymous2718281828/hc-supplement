@@ -14,6 +14,11 @@ Our experiments are implemented on a [separate branch](https://github.com/se-sic
 Please follow the instructions in the [documentation](https://vara.readthedocs.io/en/vara-dev/vara-ts/vara-buildsetup.html) to set up a local copy of the VaRA Tool-Suite and install all dependencies.
 Once installed, follow the [post-install steps](https://vara.readthedocs.io/en/vara-dev/tutorials/getting_started.html#post-install-steps) to set up the VaRA-TS environment.
 
+## Benchbuild
+The VaRA-TS uses [benchbuild](https://github.com/PolyJIT/benchbuild) as an underlying experiment framework.
+For this paper, we implemented some quality of life improvements that we maintain on an individual [fork]().
+Please make sure to use this benchbuild for full compatibility.
+
 ## AST Pattern Matching Tool
 TODO
 
@@ -33,7 +38,7 @@ For completeness, we also provide a documentation of the individual options for 
 ## Generating using `vara-art`
 
 The VaRA-TS provides the `vara-art` command to generate plots and tables with a single command.
-To generate a specific arteface with the same options as used in the paper, and on this website, run the following command in the VaRA-TS environment:
+To generate a specific artefact with the same options as used in the paper, and on this website, run the following command in the VaRA-TS environment:
 ```bash
 vara-art generate <artefact>
 ```
@@ -134,3 +139,89 @@ The following values for `<table_name>` are relevant for this paper:
 - `hc_perf_sensitivity` - Generates Table 5 of the paper.
 - `hc_setting_id_mappings` - Command used by the artefact `setting_mappings_table`.
 - `hc_config_alt_id_mappings` - Command used by the artefact `conf_alt_mappings`.
+
+# Reproducing Experiment Data
+
+The VaRA-TS provides a set of commands to run isolated experiments related to the paper.
+We will provide a best-effort description of how one can run these experiments on their own hardware.
+However, there are some caveats that might require manual intervention or adaption of configuration files.
+While we try to list them all here, it is possible that some are overlooked.
+The first author is happy to respond to any potential issues that arise while trying to re-run the experiments.
+
+## Setting up containers
+Some of our experiments support building and measuring in a `podman` container to ensure all dependencies are available.
+Please follow the [container guide](https://vara.readthedocs.io/en/vara-dev/tutorials/container_guide.html), using the base image `DEBIAN_12`, of the VaRA-TS to properly setup the environment.
+The experiments for the following case studies were executed in a container:
+- `cadical`
+- `cryptominisat`
+-  libzmq`
+- `libvpx`
+- `lrzip`
+- `xz`
+- `duckdb`
+- `postgresql`
+
+## Setting up Configuration Alternatives
+TODO
+
+## Running Experiments
+
+The VaRA-TS uses the `vara-run` command to run experiments.
+The general syntax is:
+
+```bash
+vara-run -E <experiment_name> [--slurm] [--container] <case_study...>
+```
+
+Where:
+- `<experiment_name>` is the name of the experiment to run (Supported experiment names are explained in the following subsections)
+- `--slurm` is an optional flag that enables the generation of a slurm script to run the experiments on a cluster managed by slurm
+- `--container` is an optional flag that enables running experiments inside a container
+- `<case_study...>` are one or multiple case studies to run the specified experiment for. Available are:
+    - `7zip`
+    - `DunePerfRegression`
+    - `libzmq`
+    - `libvpx`
+    - `x264`
+    - `brotli`
+    - `bzip2`
+    - `ect`
+    - `gzip`
+    - `lepton`
+    - `lrzip`
+    - `xz`
+    - `duckdb`
+    - `mariadb`
+    - `postgresql`
+    - `HyTeg`
+    - `FastDownward`
+    - `cadical`
+    - `cryptominisat`
+
+### `FindHiddenConfigurationPoints` (Finding Candidate Locations)
+The `FindHiddenConfigurationPoints` is used to run the AST matching tool to find candidate locations for hidden configuration opportunities.
+It requires that the AST matching tool is installed and available in the VaRA-TS environment.
+Its' results are stored in JSON files in the case-study specific `results` directory.
+
+### `CollectBinaryCoverages` (Collecting Coverages of Workloads)
+The `CollectBinaryCoverages` experiment is used to collect the coverage of workloads for each case study.
+Its' results are stored in JSON files in the case-study specific `results` directory.
+
+### `FilterHiddenConfigurabilityReport` (Filtering Candidate Locations)
+The `FilterHiddenConfigurationPoints` experiment is used to filter the candidate locations found by the `FindHiddenConfigurationPoints` experiment.
+It uses the coverage data collected by the `CollectBinaryCoverages` experiment.
+The output format are JSON files with the same format as for the `FindHiddenConfigurationPoints` experiment, with additional tags for excluded locations.
+
+### `TestPatchVariations` (Testing Configuration Alternatives)
+This experiment runs the tests for each configuration alternative on the specified case studies, as well as the unmodified program.
+Running this experiment requires that the case study has properly defined configuration alternatives.
+
+### `TimePatchedWorkloads` (Measuring Performance of Configuration Alternatives)
+This experiment measures the performance of each configuration alternative on the specified case studies, as well as the unmodified program.
+Running this experiment requires that the case study has properly defined configuration alternatives.
+
+# Annotating Candidate Locations
+To manually investigate the candidate locations that are the result of the `FindHiddenConfigurationPoints` or `FilterHiddenConfigurabilityReport` experiments, we used GitHub Copilot to develop a plugin for the JetBrains IDE.
+It can be found in its' own [repository]().
+
+...
