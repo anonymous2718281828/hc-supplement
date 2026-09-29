@@ -16,11 +16,11 @@ Once installed, follow the [post-install steps](https://vara.readthedocs.io/en/v
 
 ## Benchbuild
 The VaRA-TS uses [benchbuild](https://github.com/PolyJIT/benchbuild) as an underlying experiment framework.
-For this paper, we implemented some quality of life improvements that we maintain on an individual [fork]().
+For this paper, we implemented some quality of life improvements that we maintain on an individual [fork](https://github.com/LuAbelt/benchbuild/tree/dev-VaRA).
 Please make sure to use this benchbuild for full compatibility.
 
 ## AST Pattern Matching Tool
-TODO
+We provide the implementation of our AST matching tool on [GitHub](https://github.com/se-sic/HVar-Detector).
 
 # Preparing the VaRA-TS Environment
 In order to setup the correct case studies and revisions unpack the `results.zip` file into your `$VARATS_ROOT` directory (The directory in which you setup the VaRA-TS).
@@ -162,7 +162,39 @@ The experiments for the following case studies were executed in a container:
 - `postgresql`
 
 ## Setting up Configuration Alternatives
-TODO
+To include configuration alternatives in the experiments, the VaRA-TS requires that the respective case studies have alternatives defined.
+Adding configuration alternatives requires the following components:
+1. A patch definition file that is applied to the case study before compilation.
+2. Iff the patch uses placeholders for configuration values, a list of alternative values to setup in the patch.
+
+### Adding Patch Definitions
+Patches for a project need to be added to the `vara-project-patches` [repository](https://github.com/se-sic/vara-project-patches/).
+With some local modifications in the VaRA-TS source one can also only work on a new local branch that exists solely in `$VARATS_ROOT/benchbuild/tmp/patch-configurations`.
+A detailed description how to set this up is beyond scope for this document, but the first author is happy to provide guidance on this.
+
+A patch usually consists of a `<patch>.info` file that describes the patch (and optionally, its' arguments) and a corresponding `<patch>.patch` file that contains the actual patch to apply.
+The format of the patch file is the same as for the `git apply` command.
+
+### Adding Configuration Alternatives
+To setup different values for placeholders to be used in a patch, these alternatives need to be defined in the `.case-study` file of the respective case study.
+To the end of the `.case-study` file, add a new section with the following format:
+
+```
+---
+config_type: PatchVariationConfiguration
+0: '{<patch_name>: {<arg_name>: [<arg_value_1>, <arg_value_2>, ...]}}'
+...
+<n>: '{}'
+...
+```
+
+Where:
+- `<patch_name>` is the shortname of the patch to apply (as defined in the `<patch>.info` file)
+- `<arg_name>` is the name of the argument to set (as defined in the `<patch>.info` file)
+- `<arg_value_1>, <arg_value_2>, ...` are the values to use for the argument. The number of values defines the number of configuration alternatives to generate.
+- The `n: '{}'` entry will be treated as the unmodified program.
+
+*Note:* The identifier for each row needs to be incrementing, starting with 0 for the first row. This is a technical requirement of the VaRA-TS.
 
 ## Running Experiments
 
@@ -198,30 +230,34 @@ Where:
     - `cadical`
     - `cryptominisat`
 
-### `FindHiddenConfigurationPoints` (Finding Candidate Locations)
+### Finding Candidate Locations (`FindHiddenConfigurationPoints`)
 The `FindHiddenConfigurationPoints` is used to run the AST matching tool to find candidate locations for hidden configuration opportunities.
 It requires that the AST matching tool is installed and available in the VaRA-TS environment.
 Its' results are stored in JSON files in the case-study specific `results` directory.
 
-### `CollectBinaryCoverages` (Collecting Coverages of Workloads)
+### Collecting Coverage Information (`CollectBinaryCoverages` and `BenchbaseCoverage`)
 The `CollectBinaryCoverages` experiment is used to collect the coverage of workloads for each case study.
+For projects using Benchbase as their workloads (`mariadb`, `postgresql`), the `BenchbaseCoverage` experiment is used instead.
 Its' results are stored in JSON files in the case-study specific `results` directory.
 
-### `FilterHiddenConfigurabilityReport` (Filtering Candidate Locations)
+### Filtering Candidate Locations (`FilterHiddenConfigurabilityReport`)
 The `FilterHiddenConfigurationPoints` experiment is used to filter the candidate locations found by the `FindHiddenConfigurationPoints` experiment.
-It uses the coverage data collected by the `CollectBinaryCoverages` experiment.
+It uses the coverage data collected by the `CollectBinaryCoverages` and `BenchbaseCoverage` experiment.
 The output format are JSON files with the same format as for the `FindHiddenConfigurationPoints` experiment, with additional tags for excluded locations.
 
-### `TestPatchVariations` (Testing Configuration Alternatives)
+### Testing configuration alternatives (`TestPatchVariations`)
 This experiment runs the tests for each configuration alternative on the specified case studies, as well as the unmodified program.
 Running this experiment requires that the case study has properly defined configuration alternatives.
 
-### `TimePatchedWorkloads` (Measuring Performance of Configuration Alternatives)
-This experiment measures the performance of each configuration alternative on the specified case studies, as well as the unmodified program.
+### Measuring performance of Configuration Alternatives (`TimePatchedWorkloads`, `RunPatchedWorkloads`, `BenchbaseHiddenConfig`)
+These experiments measures the performance of each configuration alternative on the specified case studies, as well as the unmodified program.
 Running this experiment requires that the case study has properly defined configuration alternatives.
+
+Most case studies use the `TimePatchedWorkloads` experiment, while the `BenchbaseHiddenConfig` experiment is used for case studies that use Benchbase as their workloads (`mariadb`, `postgresql`).
+For `duckdb` we use the `RunPatchedWorkloads` experiment.
 
 # Annotating Candidate Locations
 To manually investigate the candidate locations that are the result of the `FindHiddenConfigurationPoints` or `FilterHiddenConfigurabilityReport` experiments, we used GitHub Copilot to develop a plugin for the JetBrains IDE.
-It can be found in its' own [repository]().
+It can be found in its' own [repository](https://github.com/LuAbelt/FindingsNavigator).
 
-...
+Once installed, users can select a JSON file with results for the specific case study. The plugin then offers a small navigator widget listing all found locations. When opening a JSON file while having the corresponding project open, it offers additional editor highlighting and navigating to specific results by double-clicking. The plugin can filter based on assigned tags and assign new tags to locations.
