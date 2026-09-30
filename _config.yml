@@ -22,7 +22,7 @@ title: Hidden Configurability -- Supplementary Website
 email: 296848198+anonymous2718281828@users.noreply.github.com
 description: >- # this means to ignore newlines until "baseurl:"
   Supplementary website for the paper “The Road not Taken: A Tale on Hidden Configurability”.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/hc-supplement/" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
