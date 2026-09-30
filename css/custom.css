@@ -1,0 +1,11 @@
+.image-container {
+  height: 500px;
+  overflow: auto;
+}
+
+.image-container img {
+  height: 500px;
+  width: auto;
+  max-width: none;
+  display: block;
+}
